@@ -1,0 +1,53 @@
+
+/* 1. RESET & FULL SCREEN SETUP */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2. SHIMMER ANIMATION */
+@keyframes shimmerMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 3. GRADIENT TEXT CLASSES (THE FIX) */
+/* This ensures the background stays INSIDE the text, not a box behind it */
+
+.gradient-text-dark {
+  background: linear-gradient(90deg, #FF1493, #FF69B4, #FFFFFF, #FF1493);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* Fallback */
+  animation: shimmerMove 3s linear infinite;
+}
+
+.gradient-text-light {
+  background: linear-gradient(90deg, #000000, #555555, #999999, #000000);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* Fallback */
+  animation: shimmerMove 3s linear infinite;
+}
